@@ -84,9 +84,9 @@ enoptype ReadOpType()
     return (enoptype)number;
 }
 
-int RandomNumber(int min, int max)
+int n_umber(int min, int max)
 {
-    return rand() % (max - min + 1) + min;
+    return 2;
 }
 
 string GetFinalResultText(stgame game)
@@ -234,13 +234,13 @@ int GetNumber(stquastion quastion)
     switch (quastion.level)
     {
     case(easy):
-        return RandomNumber(1, 10);
+        return n_umber(1, 10);
     case(medium):
-        return RandomNumber(10, 20);
+        return n_umber(10, 20);
     case(hard):
-        return RandomNumber(20, 50);
+        return n_umber(20, 50);
     case(insane):
-        return RandomNumber(50, 100);
+        return n_umber(50, 100);
     }
 }
 
@@ -249,14 +249,14 @@ stquastion GenerateQuastion(stgame game)
     stquastion quastion;
 
     if (game.q_level == enlevel::MixOfNumbers)
-        game.q_level = (enlevel)RandomNumber(1, 4);
+        game.q_level = (enlevel)n_umber(1, 4);
     quastion.level = game.q_level;
 
     quastion.num1 = GetNumber(quastion);
     quastion.num2 = GetNumber(quastion);
 
     if (game.q_optype == enoptype::MixOfOpTypes)
-        game.q_optype = (enoptype)RandomNumber(1, 4);
+        game.q_optype = (enoptype)n_umber(1, 4);
     quastion.optype = game.q_optype;
 
     quastion.optype = GetOpType(quastion);
@@ -308,7 +308,6 @@ void StartMainGame()
 
 int main()
 {
-    srand((unsigned)time(NULL));
     StartMainGame();
     return 0;
 }
